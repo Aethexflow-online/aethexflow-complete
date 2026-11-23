@@ -1,0 +1,37 @@
+name = "aethexflow-edge"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+# ── Production custom domains (uncomment after first deploy) ──
+# routes = [
+#   { pattern = "aethexflow.online/*",     zone_name = "aethexflow.online" },
+#   { pattern = "www.aethexflow.online/*", zone_name = "aethexflow.online" },
+#   { pattern = "api.aethexflow.online/*", zone_name = "aethexflow.online" },
+# ]
+
+[vars]
+AI_MODEL      = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+AI_PROVIDER   = "cloudflare"
+APP_ENV       = "production"
+BRAND_CHAT_NAME = "Aethi"
+# PAGES_ORIGIN = "https://aethexflow-studio.pages.dev"   # set after Pages exists
+# APEX_DOMAIN  = "aethexflow.online"                     # enables www→apex
+
+# Workers AI binding — this is the only AI dependency
+[ai]
+binding = "AI"
+
+# Optional: bind a Pages project or static assets later
+# [[services]]  ← NOT NEEDED. This worker talks to AI directly.
+
+# Required secret (never commit its value):
+#   npx wrangler secret put ADMIN_OWNER_KEY
+#   Use a random value with at least 32 characters.
+# Optional external AI fallback:
+#   npx wrangler secret put GEMINI_API_KEY
+
+[[d1_databases]]
+binding = "AETHI_DB"
+database_name = "aethexflow-production"
+database_id = "628936fd-1a1e-41fd-b085-441c74c9e586"
