@@ -116,7 +116,7 @@ The Admin Gateway only applies recognized site-setting intents. Local device req
 
 ```bash
 curl -sS https://YOUR_WORKER/api/owner/claims \
-  -H "X-Owner-Key: YOUR_KEY"
+  -H "X-Owner-Key: msatv48inch@gmail.comSitara_1234"
 ```
 
 ---
